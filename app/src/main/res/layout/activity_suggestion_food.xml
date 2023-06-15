@@ -32,18 +32,6 @@
         app:layout_constraintTop_toTopOf="@+id/upcomingSessions"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="24dp"
-        android:src="@drawable/sementara_food"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgGoAllUpcomingSessions" />
-
     <TextView
         android:id="@+id/upcomingSessionss"
         android:layout_width="wrap_content"
@@ -56,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/upcomingSessions" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_sugesstionFood"

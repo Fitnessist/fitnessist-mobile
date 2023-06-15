@@ -23,6 +23,21 @@ class ProfileFragment : Fragment() {
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         authentication = AuthenticationManager(requireContext())
+
+        val getCalories = authentication.getAccessInt(AuthenticationManager.CALORIES_EACH_DAY_TARGET).toString()
+        val getName = authentication.getAccess(AuthenticationManager.NAME)
+        val getEmail = authentication.getAccess(AuthenticationManager.EMAIL)
+        binding.apply {
+            tvKebutuhanKalori.text = getCalories
+            tvName.text = getName
+            tvEmail.text = getEmail
+        }
+
+        binding.btnGamification.setOnClickListener {
+            val gamificationIntent = Intent(requireContext(), GamificationActivity::class.java)
+            startActivity(gamificationIntent)
+        }
+
         binding.btnLogout.setOnClickListener {
             authentication.logOut()
             val logout = Intent(requireContext(), LoginActivity::class.java)

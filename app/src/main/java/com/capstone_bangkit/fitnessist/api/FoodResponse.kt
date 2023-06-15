@@ -1,6 +1,5 @@
 package com.capstone_bangkit.fitnessist.api
 
-import com.capstone_bangkit.fitnessist.model.Food
 import com.capstone_bangkit.fitnessist.model.FoodPredictionList
 
 class FoodResponse (

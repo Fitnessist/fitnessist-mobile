@@ -59,19 +59,19 @@ class UserBodyDataActivity : AppCompatActivity() {
                             }, onError = { errorMessage ->
                                 Toast.makeText(this@UserBodyDataActivity, "Error memasukkan data", Toast.LENGTH_SHORT).show()
                             })
-                        authenticationViewModel.getTDEECalculation(tokenAccess,
-                            onSuccess = { response ->
-                                if (response.data.age != 0) {
-                                    login(AuthenticationManager.NAME, response.data.user.name)
-                                    login(AuthenticationManager.USERNAME, response.data.user.username)
-                                    val login = Intent(this@UserBodyDataActivity, MainActivity::class.java)
-                                    startActivity(login)
-                                    finishAffinity()
-                                }
-                            }, onError = { errorMessage ->
-                                Toast.makeText(this@UserBodyDataActivity, errorMessage, Toast.LENGTH_SHORT).show()
-                            })
                     }
+                    authenticationViewModel.getTDEECalculation(tokenAccess,
+                        onSuccess = { response ->
+                            if (response.data.age != 0) {
+                                login(AuthenticationManager.NAME, response.data.user.name)
+                                login(AuthenticationManager.USERNAME, response.data.user.username)
+                                val login = Intent(this@UserBodyDataActivity, MainActivity::class.java)
+                                startActivity(login)
+                                finishAffinity()
+                            }
+                        }, onError = { errorMessage ->
+                            Toast.makeText(this@UserBodyDataActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                        })
                 }
                 val login = Intent(this@UserBodyDataActivity, MainActivity::class.java)
                 startActivity(login)
