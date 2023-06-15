@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone_bangkit.fitnessist.databinding.ItemFoodCardBinding
-import com.capstone_bangkit.fitnessist.databinding.ItemFoodHorizontalBinding
 import com.capstone_bangkit.fitnessist.model.Food
 
 class FoodHistoryAdapter: RecyclerView.Adapter<FoodHistoryAdapter.FoodHistoryViewHolder>() {

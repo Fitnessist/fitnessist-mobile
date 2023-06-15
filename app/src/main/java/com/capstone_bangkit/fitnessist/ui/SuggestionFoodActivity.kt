@@ -1,5 +1,6 @@
 package com.capstone_bangkit.fitnessist.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,15 @@ class SuggestionFoodActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.rvSugesstionFood.layoutManager = layoutManager
         snapFoodAdapter = foodPredictionsList?.let { SnapFoodAdapter(it) }!!
+        snapFoodAdapter.setOnItemClickCallback(object: SnapFoodAdapter.OnItemClickCallback {
+            override fun onItemClicked(foodPrediction: FoodPrediction) {
+                val intent = Intent(this@SuggestionFoodActivity, AddFoodActivity::class.java)
+                intent.putExtra("food_id", foodPrediction.food?.id)
+                intent.putExtra("food_name", foodPrediction.food?.food_name)
+                intent.putExtra("image_url", foodPrediction.food?.image_url)
+                intent.putExtra("calories_per_100gr", foodPrediction.food?.calories_per_100gr.toString())
+            }
+        })
         binding.rvSugesstionFood.adapter = snapFoodAdapter
     }
 }

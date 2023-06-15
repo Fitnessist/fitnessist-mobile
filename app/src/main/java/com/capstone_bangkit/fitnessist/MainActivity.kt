@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.capstone_bangkit.fitnessist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +17,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navController = Navigation.findNavController(this, R.id.activity_main_nav_host_fragment)
-        setupWithNavController(binding.bottomNavigationView, navController)
+
+        val snapFoodSuccess = intent.getIntExtra("SnapFoodSuccess", -1)
+        if (snapFoodSuccess != -1) {
+            navController.navigate(snapFoodSuccess)
+        }
+
+        binding.bottomNavigationView.setupWithNavController(navController)
     }
 }

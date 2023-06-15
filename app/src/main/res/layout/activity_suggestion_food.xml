@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SuggestionFoodActivity">
+    tools:context=".ui.SuggestionFoodActivity"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/upcomingSessions"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+        <ImageView
+            android:id="@+id/upcomingSessions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/imgGoAllUpcomingSessions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:text="Snap Foto"
+            android:layout_marginEnd="16dp"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/upcomingSessions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.422"
+            app:layout_constraintStart_toEndOf="@+id/upcomingSessions"
+            app:layout_constraintTop_toTopOf="@+id/upcomingSessions"
+            app:layout_constraintVertical_bias="1.0" />
+    </LinearLayout>
+
+    <TextView
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/arrow_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/imgGoAllUpcomingSessions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Snap Foto"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/upcomingSessions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
-        app:layout_constraintStart_toEndOf="@+id/upcomingSessions"
-        app:layout_constraintTop_toTopOf="@+id/upcomingSessions"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
         android:id="@+id/upcomingSessionss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Suggestion"
+        android:text="Pilih item dengan keoccokan tertinggi"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
@@ -48,12 +57,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_sugesstionFood"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upcomingSessionss" />
+        app:layout_constraintVertical_bias="0.017" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

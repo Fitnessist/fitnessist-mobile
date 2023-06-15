@@ -151,7 +151,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/imgGoAllUpcomingSessionss"
+        android:id="@+id/title_food_history"
         android:layout_marginHorizontal="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -162,7 +162,7 @@
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvUpcomingSessionss"
+        android:id="@+id/rv_food_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
