@@ -63,6 +63,11 @@ class UserBodyDataActivity : AppCompatActivity() {
             if (validateInputFields()) {
                 authentication.apply {
                     var programId = intent.getStringExtra("program_id")
+
+                    if(programId.isNullOrEmpty()) {
+                      programId = authentication.getAccess(AuthenticationManager.PROGRAM_ID)
+                    }
+
                     val request =
                         TDEECalculationRequest(
                             gender = selectedGender,
@@ -129,5 +134,9 @@ class UserBodyDataActivity : AppCompatActivity() {
 
             return true
         }
+    }
+
+    companion object {
+        const val PROGRAM_ID = "program_id"
     }
 }
