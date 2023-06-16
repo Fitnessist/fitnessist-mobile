@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.capstone_bangkit.fitnessist.MainActivity
 import com.capstone_bangkit.fitnessist.R
-import com.capstone_bangkit.fitnessist.api.TDEECalculationRequest
+import com.capstone_bangkit.fitnessist.api.PostTDEECalculationRequest
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationManager
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationViewModel
 import com.capstone_bangkit.fitnessist.databinding.ActivityLoginBinding
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                     val fat = 0.0
                     val programId = ""
 
-                    val request = TDEECalculationRequest(
+                    val request = PostTDEECalculationRequest(
                         gender = gender,
                         age = age,
                         weight = weight,

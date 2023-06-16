@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
-import com.capstone_bangkit.fitnessist.R
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream

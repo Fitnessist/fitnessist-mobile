@@ -10,7 +10,8 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.capstone_bangkit.fitnessist.MainActivity
 import com.capstone_bangkit.fitnessist.R
-import com.capstone_bangkit.fitnessist.api.TDEECalculationRequest
+import com.capstone_bangkit.fitnessist.api.PostTDEECalculationRequest
+import com.capstone_bangkit.fitnessist.api.PutTDEECalculationRequest
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationManager
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationViewModel
 import com.capstone_bangkit.fitnessist.databinding.ActivityUserBodyDataBinding
@@ -68,8 +69,8 @@ class UserBodyDataActivity : AppCompatActivity() {
                       programId = authentication.getAccess(AuthenticationManager.PROGRAM_ID)
                     }
 
-                    val request =
-                        TDEECalculationRequest(
+                    val postRequest =
+                        PostTDEECalculationRequest(
                             gender = selectedGender,
                             age = binding.edtAge.text.toString().toInt(),
                             weight = binding.edtWeight.text.toString().toInt(),
@@ -80,9 +81,45 @@ class UserBodyDataActivity : AppCompatActivity() {
                         )
                     val getToken = authentication.getAccess(AuthenticationManager.TOKEN).toString()
                     val tokenAccess = "Bearer $getToken"
-                    if (request != null) {
-                        authenticationViewModel.addTDEECalculation(tokenAccess, request,
-                            onSuccess = { response ->
+                    authenticationViewModel.addTDEECalculation(tokenAccess, postRequest,
+                        onSuccess = { response ->
+                            login(AuthenticationManager.GENDER, response.data.gender)
+                            loginInt(AuthenticationManager.AGE, response.data.age)
+                            loginInt(AuthenticationManager.WEIGHT, response.data.weight)
+                            loginInt(AuthenticationManager.HEIGHT, response.data.height)
+                            login(AuthenticationManager.ACTIVITY, response.data.activity)
+                            loginInt(AuthenticationManager.FAT, response.data.fat)
+                            loginInt(AuthenticationManager.CALORIES_EACH_DAY, response.data.calories_each_day)
+                            loginInt(AuthenticationManager.CALORIES_EACH_DAY_TARGET, response.data.calories_each_day_target)
+                        }, onError = { errorMessage ->
+                            Toast.makeText(this@UserBodyDataActivity, "Error memasukkan data", Toast.LENGTH_SHORT).show()
+                        })
+
+                    authenticationViewModel.getTDEECalculation(tokenAccess,
+                        onSuccess = { response ->
+                            if (response.data.age != 0) {
+                                login(AuthenticationManager.NAME, response.data.user.name)
+                                login(AuthenticationManager.USERNAME, response.data.user.username)
+                            }
+                        }, onError = { errorMessage ->
+                            Toast.makeText(this@UserBodyDataActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                        })
+
+                    val putRequest =
+                        PutTDEECalculationRequest(
+                            gender = selectedGender,
+                            age = binding.edtAge.text.toString().toInt(),
+                            weight = binding.edtWeight.text.toString().toInt(),
+                            height = binding.edtHeight.text.toString().toInt(),
+                            activity = selectedActivity,
+                            fat = binding.edtFat.text.toString().toDouble(),
+                            program_id = programId!!,
+                            weight_target = binding.edtWeightTarget.text.toString().toInt()
+                        )
+                    authenticationViewModel.putTDEECalculation(tokenAccess,putRequest,
+                        onSuccess = { response ->
+                            if (response.data.weight_target != 0) {
+                                login(AuthenticationManager.WEIGHT_TARGET, response.data.weight_target.toString())
                                 login(AuthenticationManager.GENDER, response.data.gender)
                                 loginInt(AuthenticationManager.AGE, response.data.age)
                                 loginInt(AuthenticationManager.WEIGHT, response.data.weight)
@@ -91,26 +128,14 @@ class UserBodyDataActivity : AppCompatActivity() {
                                 loginInt(AuthenticationManager.FAT, response.data.fat)
                                 loginInt(AuthenticationManager.CALORIES_EACH_DAY, response.data.calories_each_day)
                                 loginInt(AuthenticationManager.CALORIES_EACH_DAY_TARGET, response.data.calories_each_day_target)
-
-                                val login = Intent(this@UserBodyDataActivity, MainActivity::class.java)
-                                startActivity(login)
-                                finishAffinity()
-                            }, onError = { errorMessage ->
-                                Toast.makeText(this@UserBodyDataActivity, "Error memasukkan data", Toast.LENGTH_SHORT).show()
-                            })
-                    }
-                    authenticationViewModel.getTDEECalculation(tokenAccess,
-                        onSuccess = { response ->
-                            if (response.data.age != 0) {
-                                login(AuthenticationManager.NAME, response.data.user.name)
-                                login(AuthenticationManager.USERNAME, response.data.user.username)
                                 val login = Intent(this@UserBodyDataActivity, MainActivity::class.java)
                                 startActivity(login)
                                 finishAffinity()
                             }
-                        }, onError = { errorMessage ->
-                            Toast.makeText(this@UserBodyDataActivity, errorMessage, Toast.LENGTH_SHORT).show()
-                        })
+                        }) { errorMessage ->
+                        Toast.makeText(this@UserBodyDataActivity, errorMessage, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
                 val login = Intent(this@UserBodyDataActivity, MainActivity::class.java)
                 startActivity(login)

@@ -3,7 +3,6 @@ package com.capstone_bangkit.fitnessist.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.capstone_bangkit.fitnessist.api.AddMyProgramRequest
 import com.capstone_bangkit.fitnessist.api.ApiConfig
 import com.capstone_bangkit.fitnessist.api.PaginationData

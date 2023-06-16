@@ -9,51 +9,41 @@ import com.capstone_bangkit.fitnessist.api.AddFoodHistoryRequest
 import com.capstone_bangkit.fitnessist.api.AddFoodHistoryResponse
 import com.capstone_bangkit.fitnessist.api.ApiConfig
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationManager
-import com.capstone_bangkit.fitnessist.databinding.ActivityFoodCaloriesReviewBinding
+import com.capstone_bangkit.fitnessist.databinding.ActivityAddFoodManualBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FoodCaloriesReviewActivity : AppCompatActivity() {
+class AddFoodManualActivity : AppCompatActivity() {
     private lateinit var authentication: AuthenticationManager
-    private lateinit var binding: ActivityFoodCaloriesReviewBinding
+    private lateinit var binding: ActivityAddFoodManualBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFoodCaloriesReviewBinding.inflate(layoutInflater)
+        binding = ActivityAddFoodManualBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         authentication = AuthenticationManager(this)
 
-        binding.btnBack.setOnClickListener {
-            onBackPressed()
-        }
-
-        var foodId = intent.getStringExtra("food_id")
-        var foodName = intent.getStringExtra("food_name")
-        var imageUrl = intent.getStringExtra("image_url")
-        var caloriesPer100gr = intent.getStringExtra("calories_per_100gr")?.toInt()
-        var totalGrams = intent.getStringExtra("total_grams")?.toInt()
-
-        val totalCalories = (caloriesPer100gr!! / 100) * totalGrams!!
-
         binding.apply {
-            tvFoodName.text = foodName
-            tvCaloriesPer100gr.text = caloriesPer100gr.toInt().toString() + " calories"
-            tvTotalFoodWeight.text = totalGrams.toInt().toString() + " calories"
-            tvTotalCalories.text = "$totalCalories calories"
+            back.setOnClickListener {
+                onBackPressed()
+            }
 
             val getToken = authentication.getAccess(AuthenticationManager.TOKEN).toString()
             val token = "Bearer $getToken"
-            val request = AddFoodHistoryRequest(
-                food_name = foodName!!,
-                food_id = foodId!!,
-                image_url = imageUrl!!,
-                calories_per_100gr = totalCalories.toDouble(),
-                total_grams = totalGrams.toInt(),
-                total_calories = totalCalories.toDouble()
-            )
-            btnKonfirmasi.setOnClickListener {
+
+            btnTambahkan.setOnClickListener {
+                var foodName = edtFoodName.text.toString()
+                var totalCalories = edtFoodWeight.text.toString().toDouble()
+                val request = AddFoodHistoryRequest(
+                    food_name = foodName,
+                    food_id = "",
+                    image_url = "",
+                    calories_per_100gr = 0.0,
+                    total_grams = 0,
+                    total_calories = totalCalories
+                )
                 ApiConfig.getApiService().addFoodHistory(token, request).enqueue(object:
                     Callback<AddFoodHistoryResponse> {
                     override fun onResponse(
@@ -62,7 +52,7 @@ class FoodCaloriesReviewActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val responseBody = response.body()
-                            val intent = Intent(this@FoodCaloriesReviewActivity, MainActivity::class.java)
+                            val intent = Intent(this@AddFoodManualActivity, MainActivity::class.java)
                             intent.putExtra("SnapFoodSuccess", R.id.userCaloriesFragment)
                             startActivity(intent)
                             finishAffinity()

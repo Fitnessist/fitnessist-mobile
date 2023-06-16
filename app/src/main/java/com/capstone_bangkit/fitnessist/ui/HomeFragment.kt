@@ -1,6 +1,5 @@
 package com.capstone_bangkit.fitnessist.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -55,6 +54,11 @@ class HomeFragment : Fragment() {
         val getName = authentication.getAccess(AuthenticationManager.NAME).toString()
         val programID = authentication.getAccess(AuthenticationManager.PROGRAM_ID).toString()
         binding.tvName.text = getName
+
+        binding.cvChangeData.setOnClickListener {
+            val changeData = Intent(requireContext(), ExerciseGoalsActivity::class.java)
+            startActivity(changeData)
+        }
 
         return binding.root
     }

@@ -7,14 +7,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.capstone_bangkit.fitnessist.R
-import com.capstone_bangkit.fitnessist.api.ApiConfig
-import com.capstone_bangkit.fitnessist.api.RegisterRequest
-import com.capstone_bangkit.fitnessist.api.RegisterResponse
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationViewModel
 import com.capstone_bangkit.fitnessist.databinding.ActivityRegisterBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var authenticationViewModel: AuthenticationViewModel

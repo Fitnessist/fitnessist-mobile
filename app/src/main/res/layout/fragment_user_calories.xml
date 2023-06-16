@@ -30,93 +30,158 @@
             app:layout_constraintVertical_bias="1.0" />
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/sementara_calendar"
-        android:layout_marginTop="32dp"/>
-
-    <TextView
-        android:id="@+id/title_kalori_harian"
-        android:layout_marginHorizontal="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kalori Harian"
-        android:textSize="20dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
         android:layout_marginTop="8dp">
         <TextView
-            android:id="@+id/kebutuhan_kalori"
+            android:id="@+id/tvSelectedDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2.200"
-            android:textSize="18dp"
-            android:layout_marginStart="13dp"
+            android:text="Selected Date: "
+            android:textSize="16dp"
             android:textStyle="bold"
-            android:layout_marginEnd="16dp"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/kalori_makanan"
-            android:layout_width="220dp"
+            android:layout_marginEnd="16dp"/>
+        <Button
+            android:id="@+id/btnSelectDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="500"
-            android:textSize="18dp"
-            android:textStyle="bold"
+            android:text="Select Date"
+            android:textSize="12dp"
             android:textColor="@color/black"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:id="@+id/kalori_akhir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="1700"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:textAlignment="textEnd"
-            android:textColor="@color/black" />
+            android:backgroundTint="@color/yellowColor"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp">
-        <TextView
-            android:id="@+id/title_firstCalories"
+        android:layout_marginHorizontal="16dp">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kebutuhan"
-            android:textSize="16dp"
-            android:textColor="@color/black" />
+            android:orientation="vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/tv_kebutuhan_kalori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.200"
+                android:textSize="18dp"
+                android:layout_marginStart="13dp"
+                android:textStyle="bold"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/title_firstCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kebutuhan"
+                android:textSize="16dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/title_LatihanCalories"
-            android:layout_width="220dp"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Makanan"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:textAlignment="center"/>
+            android:src="@drawable/baseline_minimize_24"
+            android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:id="@+id/total_firstCalories"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sisa"
-            android:textSize="16dp"
-            android:textAlignment="textEnd"
-            android:layout_marginEnd="4dp"
-            android:textColor="@color/black" />
+            android:orientation="vertical"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/tv_kalori_makanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/title_kalori_makanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Makanan"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_add_24"
+            android:layout_marginTop="16dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/tv_kalori_latihan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/title_kalori_latihan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latihan"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_pause_24"
+            android:layout_marginTop="16dp"
+            android:rotation="90"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp">
+            <TextView
+                android:id="@+id/tv_kalori_sisa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1700"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/total_firstCalories"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:text="Sisa"
+                android:textSize="16dp"
+                android:textAlignment="textEnd"
+                android:layout_marginEnd="4dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout

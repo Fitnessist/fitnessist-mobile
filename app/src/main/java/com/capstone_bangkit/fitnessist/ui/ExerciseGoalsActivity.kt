@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.capstone_bangkit.fitnessist.R
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationManager
 import com.capstone_bangkit.fitnessist.databinding.ActivityExerciseGoalsBinding
 import com.capstone_bangkit.fitnessist.viewmodel.ProgramViewModel
@@ -41,7 +39,8 @@ class ExerciseGoalsActivity : AppCompatActivity() {
             },
                 onError = {
                     showLoading(false)
-                    Toast.makeText(this@ExerciseGoalsActivity, it, Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
+                    startActivity(intent)
                 }
             )
 
@@ -61,7 +60,8 @@ class ExerciseGoalsActivity : AppCompatActivity() {
             },
                 onError = {
                     showLoading(false)
-                    Toast.makeText(this@ExerciseGoalsActivity, it, Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
+                    startActivity(intent)
                 }
             )
         }
@@ -80,7 +80,8 @@ class ExerciseGoalsActivity : AppCompatActivity() {
             },
                 onError = {
                     showLoading(false)
-                    Toast.makeText(this@ExerciseGoalsActivity, it, Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
+                    startActivity(intent)
                 }
             )
         }

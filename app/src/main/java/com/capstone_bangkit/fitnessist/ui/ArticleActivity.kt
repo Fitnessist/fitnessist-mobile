@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstone_bangkit.fitnessist.MainActivity
 import com.capstone_bangkit.fitnessist.adapter.AllArticleAdapter
-import com.capstone_bangkit.fitnessist.adapter.ArticleHomeAdapter
 import com.capstone_bangkit.fitnessist.databinding.ActivityArticleBinding
 import com.capstone_bangkit.fitnessist.model.Article
 import com.capstone_bangkit.fitnessist.model.ArticleDataDummy

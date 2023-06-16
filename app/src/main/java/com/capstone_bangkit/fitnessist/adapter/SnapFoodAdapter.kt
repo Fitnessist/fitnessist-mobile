@@ -54,12 +54,6 @@ class SnapFoodAdapter(private val foodList: List<FoodPrediction>): RecyclerView.
 
     override  fun getItemCount(): Int = foodList.size
 
-    fun getSnapFoods(listFood: ArrayList<Food>) {
-        food.clear()
-        food.addAll(listFood)
-        notifyDataSetChanged()
-    }
-
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }

@@ -40,6 +40,9 @@
             android:name=".ui.AddFoodActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.AddFoodManualActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SuccessPaymentActivity"
             android:exported="false" />
         <activity

@@ -6,10 +6,10 @@ import com.capstone_bangkit.fitnessist.model.workouts.Program
 import com.capstone_bangkit.fitnessist.model.workouts.Workout
 import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -50,8 +50,14 @@ interface ApiService {
     @POST("users/properties")
     fun addTDEECalculation(
         @Header("Authorization") token: String,
-        @Body request: TDEECalculationRequest
+        @Body request: PostTDEECalculationRequest
     ): Call<AddTDEECalculationResponse>
+
+    @PUT("users/properties")
+    fun putTDEECalculation(
+        @Header("Authorization") token: String,
+        @Body request: PutTDEECalculationRequest
+    ): Call<PutTDEECalculationResponse>
 
     @GET("programs/{id}")
     fun getProgramByID(
