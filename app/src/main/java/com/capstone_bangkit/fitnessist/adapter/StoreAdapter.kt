@@ -8,6 +8,7 @@ import com.capstone_bangkit.fitnessist.databinding.ItemStoreBinding
 import com.capstone_bangkit.fitnessist.model.Store
 
 class StoreAdapter : RecyclerView.Adapter<StoreAdapter.StoreListViewHolder>() {
+    private lateinit var onItemClickCallback: OnItemClickCallback
     private val stores = ArrayList<Store>()
 
     inner class StoreListViewHolder(private val binding: ItemStoreBinding) :
@@ -20,6 +21,10 @@ class StoreAdapter : RecyclerView.Adapter<StoreAdapter.StoreListViewHolder>() {
                     .into(imageStore)
                 tvTitle.text = store.title
 
+                root.setOnClickListener {
+                    onItemClickCallback.onItemClicked(store)
+
+                }
             }
         }
     }
@@ -40,6 +45,10 @@ class StoreAdapter : RecyclerView.Adapter<StoreAdapter.StoreListViewHolder>() {
         stores.clear()
         stores.addAll(listStore)
         notifyDataSetChanged()
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 
     interface OnItemClickCallback {

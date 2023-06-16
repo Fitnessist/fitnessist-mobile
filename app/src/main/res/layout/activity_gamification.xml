@@ -144,7 +144,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/btn_tukar"
                 android:layout_width="83dp"
                 android:layout_height="28dp"
                 android:layout_marginEnd="20dp"
@@ -153,7 +153,7 @@
                 android:fontFamily="@font/opensans_semibold"
                 android:paddingLeft="20sp"
                 android:paddingRight="20sp"
-                android:text=""
+                android:text="T"
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

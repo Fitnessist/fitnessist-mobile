@@ -41,7 +41,7 @@ class FoodCaloriesReviewActivity : AppCompatActivity() {
             tvFoodName.text = foodName
             tvCaloriesPer100gr.text = caloriesPer100gr.toInt().toString() + " calories"
             tvTotalFoodWeight.text = totalGrams.toInt().toString() + " calories"
-            tvTotalCalories.text = "$totalCalories calories"
+            tvTotalCalories.text = "$totalCalories gr"
 
             val getToken = authentication.getAccess(AuthenticationManager.TOKEN).toString()
             val token = "Bearer $getToken"
