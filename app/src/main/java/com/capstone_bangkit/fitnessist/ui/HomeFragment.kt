@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone_bangkit.fitnessist.R
@@ -66,19 +67,14 @@ class HomeFragment : Fragment() {
 
         homeViewModel.myProgramData.observe(viewLifecycleOwner, Observer { myProgram ->
             authentication.login("PROGRAM", Gson().toJson(myProgram))
-            val workoutFragment = WorkoutFragment()
             val tvMyProgram = view.findViewById<TextView>(R.id.my_program_id)
             val pbMyProgram = view.findViewById<ProgressBar>(R.id.my_program_progress_bar)
             val tvPercentage = view.findViewById<TextView>(R.id.tv_my_program_percentage)
             val ivMyProgram = view.findViewById<ImageView>(R.id.iv_myWorkOut)
 
             ivMyProgram.setOnClickListener {
-                val navHostFragment = requireActivity().supportFragmentManager
-                    .findFragmentById(R.id.activity_main_nav_host_fragment) as NavHostFragment
-                val navController = navHostFragment.navController
-
                 val bundle = bundleOf("myProgram" to myProgram)
-                navController.navigate(R.id.workoutFragment, bundle)
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
             }
 
             tvMyProgram.text = myProgram!!.program?.title

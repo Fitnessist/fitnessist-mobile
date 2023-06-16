@@ -101,6 +101,9 @@ class WorkoutDetailActivity : AppCompatActivity() {
                 binding.btnToggleStart.text = "Mulai"
             }
         }
+        binding.tvBtnBackDetailWorkout.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -138,7 +141,7 @@ class WorkoutDetailActivity : AppCompatActivity() {
 
     private fun postExerciseProgress(data: Exercise){
         val token = authentication.getAccess(AuthenticationManager.TOKEN).toString()
-        val request = ExerciseProgress(programId = programId, exerciseId = data.id, exerciseLevelId = data.exerciseLevels!!.get(0).id!!, workoutId = data.workoutId, exercise = null, exerciseLevels = null, workout = null, program = null, user = null)
+        val request = ExerciseProgress(programId = programId, exerciseId = data.id, exerciseLevelId = data.exerciseLevels!!.get(0).id!!, workoutId = data.workoutId, exercise = null, exerciseLevels = null, workout = null, program = null, user = null, userId = null)
 
         exerciseViewModel.postExerciseProgress(token, request, onSuccess = {
                 Toast.makeText(this@WorkoutDetailActivity, "berhasil menambahkan data :" + it, Toast.LENGTH_SHORT).show()

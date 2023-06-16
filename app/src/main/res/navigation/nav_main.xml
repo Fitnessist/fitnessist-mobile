@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_homeFragment_to_workoutFragment"
             app:destination="@id/workoutFragment"
-            app:popUpTo="@id/homeFragment" />
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/workoutFragment"
@@ -25,12 +25,23 @@
             app:argType="com.capstone_bangkit.fitnessist.model.workouts.MyProgram"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_workoutFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_workoutFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
     </fragment>
     <fragment
         android:id="@+id/storeFragment"
         android:name="com.capstone_bangkit.fitnessist.ui.StoreFragment"
         android:label="fragment_store"
-        tools:layout="@layout/fragment_store" />
+        tools:layout="@layout/fragment_store" >
+        <action
+            android:id="@+id/action_storeFragment_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.capstone_bangkit.fitnessist.ui.ProfileFragment"

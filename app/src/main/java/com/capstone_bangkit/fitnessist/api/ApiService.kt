@@ -95,4 +95,9 @@ interface ApiService {
         @Body request: ExerciseProgress
     ): Call<ResponseJSON<ExerciseProgress>>
 
+    @GET("my-progress")
+    fun getExerciseProgress(
+        @Header("Authorization") token: String,
+    ): Call<ResponseJSON<List<ExerciseProgress>>>
+
 }

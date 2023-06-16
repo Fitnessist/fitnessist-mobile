@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -15,6 +16,7 @@ import com.capstone_bangkit.fitnessist.adapter.ExerciseAdapter
 import com.capstone_bangkit.fitnessist.adapter.WorkoutHarianAdapter
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationManager
 import com.capstone_bangkit.fitnessist.databinding.ActivityWorkoutListBinding
+import com.capstone_bangkit.fitnessist.model.ExerciseProgress
 import com.capstone_bangkit.fitnessist.model.workouts.Exercise
 import com.capstone_bangkit.fitnessist.model.workouts.Workout
 import com.capstone_bangkit.fitnessist.viewmodel.ExerciseViewModel
@@ -36,7 +38,6 @@ class WorkoutListActivity : AppCompatActivity() {
 
         val token = authentication.getAccess(AuthenticationManager.TOKEN).toString()
         val workout = intent.getParcelableExtra<Workout>("workout")
-        Toast.makeText(this, workout.toString(), Toast.LENGTH_SHORT).show()
 
         if (workout == null) {
             val transaction = supportFragmentManager.beginTransaction()
@@ -49,6 +50,13 @@ class WorkoutListActivity : AppCompatActivity() {
 
         workoutViewModel.workouts.observe(this, Observer {
             exerciseAdapter.setExercises(it?.exercises!!)
+            binding.tvTotalWorkout.text = "${it.exercises.size} Workout"
+            exerciseRecyclerView()
+            onExerciseClick()
+        })
+
+        workoutViewModel.exerciseProgress.observe(this, Observer {
+            exerciseAdapter.setExerciseProgress(it as ArrayList<ExerciseProgress>)
             exerciseRecyclerView()
             onExerciseClick()
         })
@@ -59,6 +67,18 @@ class WorkoutListActivity : AppCompatActivity() {
                 Toast.makeText(this@WorkoutListActivity, it, Toast.LENGTH_SHORT).show()
             }
         )
+
+        this.workoutViewModel.getExerciseProgress(
+            token,
+            onError = {
+                Toast.makeText(this@WorkoutListActivity, it, Toast.LENGTH_SHORT).show()
+                Log.d("INI", "inikah: " + it)
+            }
+        )
+
+        binding.tvBtnBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun exerciseRecyclerView() {

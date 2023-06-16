@@ -10,10 +10,12 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone_bangkit.fitnessist.R
 import com.capstone_bangkit.fitnessist.adapter.WorkoutHarianAdapter
@@ -67,7 +69,12 @@ class WorkoutFragment : Fragment() {
             setWorkoutOnClick()
         })
 
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         this.workoutViewModel.getAllWorkouts(token, programId)
+
+        binding.tvBtnBackWorkoutFragment.setOnClickListener {
+          requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        }
     }
 
     private fun workoutRecyclerView() {
@@ -85,5 +92,12 @@ class WorkoutFragment : Fragment() {
                 }
             }
         })
+    }
+
+    val callback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            // Kembali ke Fragment Home
+            findNavController().navigate(R.id.homeFragment)
+        }
     }
 }

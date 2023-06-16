@@ -13,6 +13,7 @@ import retrofit2.Response
 
 class ExerciseViewModel(application: Application) : AndroidViewModel(application)  {
     val workouts: MutableLiveData<Workout?> = MutableLiveData()
+    val exerciseProgress: MutableLiveData<List<ExerciseProgress>> = MutableLiveData()
     val TAG = "ExerciseViewModel"
 
     fun getWorkoutWithId(workoutId: String, onError: (String) -> Unit) {
@@ -44,10 +45,28 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
                 if (response.isSuccessful) {
                     onSuccess(response.body()!!.data!!)
                 } else {
-                    onError("Server Error Coba lagi Setelah Beberapa Saat")
+                    onError(response.body()?.status?.message ?: "Server Error Coba lagi Setelah Beberapa Saat")
                 }
 
             override fun onFailure(call: Call<ResponseJSON<ExerciseProgress>>, t: Throwable) {
+                onError(t.message ?: "Server Error Coba lagi Setelah Beberapa Saat")
+            }
+        })
+    }
+
+    fun getExerciseProgress(token: String, onError: (String) -> Unit) {
+        val accessToken = "Bearer $token"
+        ApiConfig.getApiService().getExerciseProgress(accessToken).enqueue(object :
+            Callback<ResponseJSON<List<ExerciseProgress>>> {
+            override fun onResponse(call: Call<ResponseJSON<List<ExerciseProgress>>>, response: Response<ResponseJSON<List<ExerciseProgress>>>) =
+                if (response.isSuccessful) {
+                    val data = response.body()!!.data!!
+                    exerciseProgress.postValue(data)
+                } else {
+                    onError("Server Error Coba lagi Setelah Beberapa Saat")
+                }
+
+            override fun onFailure(call: Call<ResponseJSON<List<ExerciseProgress>>>, t: Throwable) {
                 onError(t.message ?: "Server Error Coba lagi Setelah Beberapa Saat")
             }
         })
