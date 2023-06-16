@@ -1,5 +1,6 @@
 package com.capstone_bangkit.fitnessist.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.capstone_bangkit.fitnessist.adapter.StoreAdapter
 import com.capstone_bangkit.fitnessist.databinding.FragmentStoreBinding
 import com.capstone_bangkit.fitnessist.model.Store
+import com.capstone_bangkit.fitnessist.model.StoreDummy
 
-class StoreFragment : Fragment(), StoreAdapter.OnItemClickCallback {
+class StoreFragment : Fragment() {
     private lateinit var binding: FragmentStoreBinding
     private lateinit var storeAdapter: StoreAdapter
 
@@ -21,6 +23,13 @@ class StoreFragment : Fragment(), StoreAdapter.OnItemClickCallback {
     ): View {
         binding = FragmentStoreBinding.inflate(inflater, container, false)
         storeAdapter = StoreAdapter()
+        storeAdapter.setStores(StoreDummy.listStore)
+        storeAdapter.setOnItemClickCallback(object : StoreAdapter.OnItemClickCallback {
+            override fun onItemClicked(store: Store) {
+                val buy = Intent(requireContext(), SuccessPaymentActivity::class.java)
+                startActivity(buy)
+            }
+        })
         storeRecyclerView()
         return binding.root
     }
@@ -30,9 +39,5 @@ class StoreFragment : Fragment(), StoreAdapter.OnItemClickCallback {
             layoutManager = GridLayoutManager(activity, 2)
             adapter = storeAdapter
         }
-    }
-
-    override fun onItemClicked(store: Store) {
-        // Implement your action when a store item is clicked
     }
 }
