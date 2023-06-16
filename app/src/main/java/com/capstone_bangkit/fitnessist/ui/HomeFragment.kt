@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -67,9 +68,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Memperbarui UI Fragment berdasarkan data yang diperoleh dari ViewModel
         val token = authentication.getAccess(AuthenticationManager.TOKEN).toString()
-        val programId = authentication.getAccess(AuthenticationManager.PROGRAM_ID).toString()
+        val programId = authentication.getAccess(AuthenticationManager.PROGRAM_ID)
 
         homeViewModel.myProgramData.observe(viewLifecycleOwner, Observer { myProgram ->
+            authentication.login(AuthenticationManager.PROGRAM_ID, myProgram.programId!!)
             authentication.login("PROGRAM", Gson().toJson(myProgram))
             val tvMyProgram = view.findViewById<TextView>(R.id.my_program_id)
             val pbMyProgram = view.findViewById<ProgressBar>(R.id.my_program_progress_bar)
@@ -88,8 +90,12 @@ class HomeFragment : Fragment() {
             pbMyProgram.setProgress(percentage, true)
             tvPercentage.text = "$percentage%"
         })
-
-        this.homeViewModel.getMyProgramData(token, programId)
+        Toast.makeText(activity, "program id " + programId, Toast.LENGTH_SHORT).show()
+        if (!programId.isNullOrEmpty()){
+            this.homeViewModel.getMyProgramData(token, programId)
+        }else{
+            this.homeViewModel.getMyProgramData(token)
+        }
     }
 
     private fun articleRecyclerView() {

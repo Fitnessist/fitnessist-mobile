@@ -33,5 +33,25 @@ class HomeViewModel: ViewModel() {
             }
         })
     }
+
+    fun getMyProgramData(token: String) {
+        val myProgramCall: Call<ResponseJSON<List<MyProgram>>>
+        val accessToken = "Bearer $token"
+
+        myProgramCall = ApiConfig.getApiService().getMyProgram(accessToken)
+        myProgramCall.enqueue(object : Callback<ResponseJSON<List<MyProgram>>> {
+            override fun onResponse(call: Call<ResponseJSON<List<MyProgram>>>, response: Response<ResponseJSON<List<MyProgram>>>) {
+                if (response.isSuccessful) {
+                    val data = response.body()!!.data!!
+                    myProgramData.postValue(data.get(0))
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseJSON<List<MyProgram>>>, t: Throwable) {
+                // Menangani kegagalan permintaan API
+                Log.d(TAG,"something went wrong")
+            }
+        })
+    }
 }
 
