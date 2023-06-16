@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Scan Makanan"
+            android:layout_marginEnd="16dp"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -39,6 +40,7 @@
         android:id="@+id/imgGoAllUpcomingSessionsss"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="20dp"
         android:text="Anda dapat memilih gambar dari gallery atau mengangkapnya."
         android:textAlignment="center"
@@ -47,14 +49,15 @@
         app:layout_constraintBottom_toTopOf="@+id/previewImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <Button
         android:id="@+id/cameraXButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/primary100"
         android:elevation="2dp"
@@ -67,10 +70,10 @@
 
     <ImageView
         android:id="@+id/previewImageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toTopOf="@+id/uploadButton"
@@ -85,7 +88,7 @@
         android:id="@+id/galleryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/primary100"

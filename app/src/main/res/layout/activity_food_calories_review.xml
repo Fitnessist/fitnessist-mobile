@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.FoodCaloriesReviewActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/food_calories_review">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
         android:layout_marginTop="64dp"
         android:layout_marginBottom="32dp">
         <ImageView
-            android:id="@+id/upcomingSessions"
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -36,7 +37,7 @@
         android:layout_marginHorizontal="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detail Kalori"
+        android:text="Detail Makanan"
         android:textSize="20dp"
         android:textColor="@color/black"
         android:textStyle="bold" />
@@ -48,15 +49,39 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="8dp">
         <TextView
-            android:id="@+id/title_firstCalories"
+            android:id="@+id/title_food_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kalori Awal"
+            android:text="Nama"
             android:textSize="16dp"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/total_firstCalories"
+            android:id="@+id/tv_food_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sate Padang"
+            android:textSize="16dp"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:id="@+id/title_calories_per_100gr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kalori per 100gr"
+            android:textSize="16dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_calories_per_100gr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="300 cal"
@@ -73,18 +98,18 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="8dp">
         <TextView
-            android:id="@+id/title_foodCalories"
+            android:id="@+id/title_food_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kalori Makanan"
+            android:text="Berat Makanan"
             android:textSize="16dp"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/total_foodCalories"
+            android:id="@+id/tv_total_food_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="800 cal"
+            android:text="300 gr"
             android:textSize="16dp"
             android:textAlignment="textEnd"
             android:textColor="@color/black"
@@ -107,10 +132,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/total_calories"
+            android:id="@+id/tv_total_calories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1100 cal"
+            android:text="900 cal"
             android:textSize="16dp"
             android:textAlignment="textEnd"
             android:textColor="@color/black"
@@ -118,6 +143,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_konfirmasi"
         android:layout_width="130dp"
         android:layout_height="55dp"
         android:layout_gravity="center"

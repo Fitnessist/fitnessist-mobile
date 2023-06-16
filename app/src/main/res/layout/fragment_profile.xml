@@ -13,26 +13,29 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/profile_image"
+            android:id="@+id/profile_image_edit"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/profilenav" />
+            android:src="@drawable/profilenav"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="editProfileImage" />
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Pengguna"
+            android:text="@string/username"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp" />
 
         <TextView
-            android:id="@+id/email"
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -53,7 +56,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="40dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -82,7 +85,7 @@
                 android:id="@+id/linearLayout2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="40dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +93,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/tv_kebutuhan_kalori"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -109,6 +112,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/menu1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18sp"
@@ -139,6 +143,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnGamification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18sp"
@@ -169,6 +174,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/menu3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18sp"
@@ -198,14 +204,13 @@
                 app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/primary100"
-        android:text="@string/log_out"
-        android:layout_marginHorizontal="16dp"/>
-
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primary100"
+            android:text="@string/log_out"
+            android:layout_marginHorizontal="16dp"/>
     </LinearLayout>
 </ScrollView>

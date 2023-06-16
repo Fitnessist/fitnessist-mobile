@@ -25,11 +25,9 @@ import com.capstone_bangkit.fitnessist.uriToFile
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
-import java.nio.charset.StandardCharsets
 
 class UploadActivity : AppCompatActivity() {
 
@@ -154,7 +152,10 @@ class UploadActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
                         if (responseBody != null) {
-                            // Handle the response as needed
+                            val foodPredictions = responseBody.data.predictions
+                            val intent = Intent(this@UploadActivity, SuggestionFoodActivity::class.java)
+                            intent.putParcelableArrayListExtra("foodPredictions", ArrayList(foodPredictions))
+                            startActivity(intent)
                         }
                     } else {
                         Toast.makeText(

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gender_options">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
+    <string-array name="activity_options">
+        <item>sedentary</item>
+        <item>lightly_active</item>
+        <item>moderately_active</item>
+        <item>very_active</item>
+        <item>extra_active</item>
+    </string-array>
+</resources>

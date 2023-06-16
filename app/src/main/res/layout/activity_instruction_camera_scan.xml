@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Scan Makanan"
+            android:layout_marginEnd="16dp"
             android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -47,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Pastikan kamera dapat dengan jelas melihat objek, posisikan makanan sesuai dengan gambar dibawah. Anda dapat memilih gambar dari gallery atau mengangkapnya."
+        android:text="Pastikan kamera dapat dengan jelas melihat objek, posisikan makanan sesuai dengan gambar dibawah."
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_marginHorizontal="24dp"
@@ -55,8 +56,8 @@
     
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/food_scan_instruction" />
 
@@ -68,7 +69,7 @@
         android:backgroundTint="@color/primary100"
         android:fontFamily="@font/montserrat_semibold"
         android:text="Tambahkan"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jumlah" />
