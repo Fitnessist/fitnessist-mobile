@@ -42,7 +42,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="300dp"
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +55,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:lottie_loop="true"
             app:srcCompat="@drawable/workout_detail" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -70,6 +71,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -92,8 +94,10 @@
                 android:text="Get Ready" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:id="@+id/tvCountDown"
@@ -107,10 +111,11 @@
 
                 <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                     android:id="@+id/pbTimer"
-                    android:layout_width="118dp"
-                    android:layout_height="123dp"
-                    android:layout_marginTop="20sp"
-                    android:layout_marginBottom="20sp"
+                    style="@style/Widget.Material3.CircularProgressIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:max="100"
+                    android:progress="100"
                     android:progressTint="@color/yellowColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -127,6 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25sp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="25sp"
                 android:background="@drawable/custom_shape"
                 android:text="Mulai" />

@@ -26,14 +26,14 @@ data class Exercise(
 
     @SerializedName("exercise_levels")
     @Expose
-    val exerciseLevels: List<ExerciseLevels>?,
+    val exerciseLevels: List<ExerciseLevel>?,
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.createTypedArrayList(ExerciseLevels)
+        parcel.createTypedArrayList(ExerciseLevel)
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Keep
-data class ExerciseLevels(
+data class ExerciseLevel(
     @SerializedName("calories_burned")
     @Expose
     val caloriesBurned: Int?,
@@ -66,12 +66,12 @@ data class ExerciseLevels(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<ExerciseLevels> {
-        override fun createFromParcel(parcel: Parcel): ExerciseLevels {
-            return ExerciseLevels(parcel)
+    companion object CREATOR : Parcelable.Creator<ExerciseLevel> {
+        override fun createFromParcel(parcel: Parcel): ExerciseLevel {
+            return ExerciseLevel(parcel)
         }
 
-        override fun newArray(size: Int): Array<ExerciseLevels?> {
+        override fun newArray(size: Int): Array<ExerciseLevel?> {
             return arrayOfNulls(size)
         }
     }

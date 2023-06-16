@@ -1,5 +1,6 @@
 package com.capstone_bangkit.fitnessist.api
 
+import com.capstone_bangkit.fitnessist.model.ExerciseProgress
 import com.capstone_bangkit.fitnessist.model.workouts.MyProgram
 import com.capstone_bangkit.fitnessist.model.workouts.Program
 import com.capstone_bangkit.fitnessist.model.workouts.Workout
@@ -87,5 +88,11 @@ interface ApiService {
     fun getMyProgram(
         @Header("Authorization") token: String,
     ): Call<ResponseJSON<List<MyProgram>>>
+
+    @POST("my-progress")
+    fun postExerciseProgress(
+        @Header("Authorization") token: String,
+        @Body request: ExerciseProgress
+    ): Call<ResponseJSON<ExerciseProgress>>
 
 }

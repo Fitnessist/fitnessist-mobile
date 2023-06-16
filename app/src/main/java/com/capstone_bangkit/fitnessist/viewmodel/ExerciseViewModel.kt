@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.capstone_bangkit.fitnessist.api.ApiConfig
 import com.capstone_bangkit.fitnessist.api.ResponseJSON
+import com.capstone_bangkit.fitnessist.model.ExerciseProgress
 import com.capstone_bangkit.fitnessist.model.workouts.Workout
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,6 +31,23 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
                 }
 
             override fun onFailure(call: Call<ResponseJSON<Workout>>, t: Throwable) {
+                onError(t.message ?: "Server Error Coba lagi Setelah Beberapa Saat")
+            }
+        })
+    }
+
+    fun postExerciseProgress(token: String, request: ExerciseProgress, onSuccess: (ExerciseProgress) -> Unit, onError: (String) -> Unit) {
+        val accessToken = "Bearer $token"
+        ApiConfig.getApiService().postExerciseProgress(accessToken, request).enqueue(object :
+            Callback<ResponseJSON<ExerciseProgress>> {
+            override fun onResponse(call: Call<ResponseJSON<ExerciseProgress>>, response: Response<ResponseJSON<ExerciseProgress>>) =
+                if (response.isSuccessful) {
+                    onSuccess(response.body()!!.data!!)
+                } else {
+                    onError("Server Error Coba lagi Setelah Beberapa Saat")
+                }
+
+            override fun onFailure(call: Call<ResponseJSON<ExerciseProgress>>, t: Throwable) {
                 onError(t.message ?: "Server Error Coba lagi Setelah Beberapa Saat")
             }
         })

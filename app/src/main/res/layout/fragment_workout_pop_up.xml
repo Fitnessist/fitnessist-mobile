@@ -44,7 +44,7 @@
                     android:src="@drawable/poin" />
 
                 <TextView
-                    android:id="@+id/textView34"
+                    android:id="@+id/tv_earned_points"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="+1000 poin"
@@ -62,14 +62,14 @@
                 android:textAlignment="center" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btnClose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25sp"
                 android:background="@drawable/custom_shape"
                 android:paddingLeft="25sp"
                 android:paddingRight="25sp"
-                android:text="Button" />
+                android:text="Oke" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
