@@ -1,6 +1,5 @@
 package com.capstone_bangkit.fitnessist.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,12 +11,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.core.widget.AutoScrollHelper
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone_bangkit.fitnessist.R
 import com.capstone_bangkit.fitnessist.adapter.ArticleHomeAdapter
@@ -25,10 +21,8 @@ import com.capstone_bangkit.fitnessist.authentication.AuthenticationManager
 import com.capstone_bangkit.fitnessist.databinding.FragmentHomeBinding
 import com.capstone_bangkit.fitnessist.model.Article
 import com.capstone_bangkit.fitnessist.model.ArticleDataDummy
-import com.capstone_bangkit.fitnessist.model.workouts.MyProgram
 import com.capstone_bangkit.fitnessist.viewmodel.HomeViewModel
 import com.google.gson.Gson
-import org.w3c.dom.Text
 
 class HomeFragment : Fragment() {
     private lateinit var authentication: AuthenticationManager
@@ -60,6 +54,11 @@ class HomeFragment : Fragment() {
         val getName = authentication.getAccess(AuthenticationManager.NAME).toString()
         val programID = authentication.getAccess(AuthenticationManager.PROGRAM_ID).toString()
         binding.tvName.text = getName
+
+        binding.cvChangeData.setOnClickListener {
+            val changeData = Intent(requireContext(), ExerciseGoalsActivity::class.java)
+            startActivity(changeData)
+        }
 
         return binding.root
     }

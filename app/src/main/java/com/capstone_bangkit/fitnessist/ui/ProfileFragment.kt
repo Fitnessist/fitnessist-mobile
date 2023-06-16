@@ -27,10 +27,12 @@ class ProfileFragment : Fragment() {
         val getCalories = authentication.getAccessInt(AuthenticationManager.CALORIES_EACH_DAY_TARGET).toString()
         val getName = authentication.getAccess(AuthenticationManager.NAME)
         val getEmail = authentication.getAccess(AuthenticationManager.EMAIL)
+        val getWeight = authentication.getAccess(AuthenticationManager.WEIGHT_TARGET)
         binding.apply {
             tvKebutuhanKalori.text = getCalories
             tvName.text = getName
             tvEmail.text = getEmail
+            tvWeightTarget.text = getWeight
         }
 
         binding.btnGamification.setOnClickListener {

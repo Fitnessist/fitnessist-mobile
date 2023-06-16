@@ -1,6 +1,5 @@
 package com.capstone_bangkit.fitnessist.ui
 
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +15,6 @@ import com.capstone_bangkit.fitnessist.databinding.FragmentUserCaloriesBinding
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
-import java.util.Calendar
 
 class UserCaloriesFragment : Fragment() {
     private lateinit var authentication: AuthenticationManager
@@ -38,8 +36,9 @@ class UserCaloriesFragment : Fragment() {
         foodHistoryAdapter = FoodHistoryAdapter(mutableListOf())
 
         val getCalories = authentication.getAccessInt(AuthenticationManager.CALORIES_EACH_DAY_TARGET).toString()
+
         binding.apply {
-            kebutuhanKalori.text = getCalories
+            tvKebutuhanKalori.text = getCalories
 
             btnScanFood.setOnClickListener {
                 val scanFood = Intent(context, InstructionCameraScanActivity::class.java)
@@ -47,25 +46,13 @@ class UserCaloriesFragment : Fragment() {
             }
 
             btnAddFood.setOnClickListener {
-                val addFood = Intent(context, AddFoodActivity::class.java)
+                val addFood = Intent(context, AddFoodManualActivity::class.java)
                 startActivity(addFood)
             }
 
             rvFoodHistory.layoutManager = LinearLayoutManager(requireContext())
             binding.rvFoodHistory.adapter = foodHistoryAdapter
         }
-
-
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        val datePickerDialog = DatePickerDialog(requireContext(), { view, selectedYear, selectedMonth, selectedDay ->
-            val selectedDate = String.format("%02d-%02d-%d", selectedDay, selectedMonth + 1, selectedYear)
-        }, year, month, day)
-
-        datePickerDialog.show()
 
         val getToken = authentication.getAccess(AuthenticationManager.TOKEN).toString()
         val token = "Bearer $getToken"
@@ -79,6 +66,9 @@ class UserCaloriesFragment : Fragment() {
                     val foodHistoryResponse = response.body()
                     val foodHistoryList = foodHistoryResponse?.data ?: emptyList()
                     foodHistoryAdapter.setData(foodHistoryList)
+                    val totalCalories = foodHistoryList.sumByDouble { it.total_calories ?: 0.0 }
+                    binding.tvKaloriMakanan.text = totalCalories.toInt().toString()
+                    binding.tvKaloriSisa.text = (getCalories.toInt() - totalCalories).toInt().toString()
                 } else {
                     // Handle error response
                 }

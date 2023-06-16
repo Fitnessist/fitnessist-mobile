@@ -32,16 +32,16 @@ class FoodCaloriesReviewActivity : AppCompatActivity() {
         var foodId = intent.getStringExtra("food_id")
         var foodName = intent.getStringExtra("food_name")
         var imageUrl = intent.getStringExtra("image_url")
-        var caloriesPer100gr = intent.getStringExtra("calories_per_100gr")?.toDouble()
-        var totalGrams = intent.getStringExtra("total_grams")?.toDouble()
+        var caloriesPer100gr = intent.getStringExtra("calories_per_100gr")?.toInt()?.toDouble()
+        var totalGrams = intent.getStringExtra("total_grams")?.toInt()?.toDouble()
 
         val totalCalories = (caloriesPer100gr!! / 100) * totalGrams!!
 
         binding.apply {
             tvFoodName.text = foodName
-            tvCaloriesPer100gr.text = caloriesPer100gr.toString()
-            tvTotalFoodWeight.text = totalGrams.toString()
-            tvTotalCalories.text = totalCalories.toString()
+            tvCaloriesPer100gr.text = caloriesPer100gr.toInt().toString() + " calories"
+            tvTotalFoodWeight.text = totalGrams.toInt().toString() + " calories"
+            tvTotalCalories.text = totalCalories.toInt().toString() + " calories"
 
             val getToken = authentication.getAccess(AuthenticationManager.TOKEN).toString()
             val token = "Bearer $getToken"

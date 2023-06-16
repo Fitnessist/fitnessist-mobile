@@ -41,7 +41,8 @@ class ExerciseGoalsActivity : AppCompatActivity() {
             },
                 onError = {
                     showLoading(false)
-                    Toast.makeText(this@ExerciseGoalsActivity, it, Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
+                    startActivity(intent)
                 }
             )
 
@@ -61,7 +62,8 @@ class ExerciseGoalsActivity : AppCompatActivity() {
             },
                 onError = {
                     showLoading(false)
-                    Toast.makeText(this@ExerciseGoalsActivity, it, Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
+                    startActivity(intent)
                 }
             )
         }
@@ -80,7 +82,8 @@ class ExerciseGoalsActivity : AppCompatActivity() {
             },
                 onError = {
                     showLoading(false)
-                    Toast.makeText(this@ExerciseGoalsActivity, it, Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
+                    startActivity(intent)
                 }
             )
         }

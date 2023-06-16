@@ -58,5 +58,6 @@ class AuthenticationManager(context: Context) {
         const val CALORIES_EACH_DAY_TARGET = "calories_each_day_target"
         const val PROGRAM_ID = "program_id"
         const val TDEE  = "tdee"
+        const val WEIGHT_TARGET = "weight_target"
     }
 }

@@ -8,9 +8,11 @@ import com.capstone_bangkit.fitnessist.api.LoginRequest
 import com.capstone_bangkit.fitnessist.api.LoginResponse
 import com.capstone_bangkit.fitnessist.api.RegisterRequest
 import com.capstone_bangkit.fitnessist.api.RegisterResponse
-import com.capstone_bangkit.fitnessist.api.TDEECalculationRequest
+import com.capstone_bangkit.fitnessist.api.PostTDEECalculationRequest
 import com.capstone_bangkit.fitnessist.api.AddTDEECalculationResponse
 import com.capstone_bangkit.fitnessist.api.GetTDEECalculationResponse
+import com.capstone_bangkit.fitnessist.api.PutTDEECalculationRequest
+import com.capstone_bangkit.fitnessist.api.PutTDEECalculationResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -87,7 +89,7 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
         })
     }
 
-    fun addTDEECalculation(token: String, request: TDEECalculationRequest, onSuccess: (AddTDEECalculationResponse) -> Unit, onError: (String) -> Unit) {
+    fun addTDEECalculation(token: String, request: PostTDEECalculationRequest, onSuccess: (AddTDEECalculationResponse) -> Unit, onError: (String) -> Unit) {
         // Mengirim permintaan ke backend
         ApiConfig.getApiService().addTDEECalculation(token, request).enqueue(object :
             Callback<AddTDEECalculationResponse> {
@@ -133,4 +135,27 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
         })
     }
 
+    fun putTDEECalculation(token: String,request: PutTDEECalculationRequest, onSuccess: (PutTDEECalculationResponse) -> Unit, onError: (String) -> Unit
+    ) {
+        // Mengirim permintaan ke backend
+        ApiConfig.getApiService().putTDEECalculation(token, request).enqueue(object :
+            Callback<PutTDEECalculationResponse> {
+            override fun onResponse(call: Call<PutTDEECalculationResponse>, response: Response<PutTDEECalculationResponse>) {
+                if (response.isSuccessful) {
+                    val tdeeResponse = response.body()
+                    if (tdeeResponse != null) {
+                        onSuccess(tdeeResponse)
+                    } else {
+                        onError("Server Error Coba lagi Setelah Beberapa Saat")
+                    }
+                } else {
+                    onError("Server Error Coba lagi Setelah Beberapa Saat")
+                }
+            }
+
+            override fun onFailure(call: Call<PutTDEECalculationResponse>, t: Throwable) {
+                onError(t.message ?: "Server Error Coba lagi Setelah Beberapa Saat")
+            }
+        })
+    }
 }
