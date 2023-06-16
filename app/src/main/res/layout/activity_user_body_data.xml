@@ -67,13 +67,11 @@
                 android:maxLines="1"
                 android:padding="12dp" />
 
-            <EditText
-                android:id="@+id/edt_gender"
+            <Spinner
+                android:id="@+id/opt_gender"
                 android:layout_width="140dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/edit_text"
-                android:maxLines="1"
-                android:padding="12dp" />
+                android:entries="@array/gender_options" />
         </LinearLayout>
 
         <LinearLayout
@@ -185,13 +183,11 @@
             android:text="Activity"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/edt_activity"
+        <Spinner
+            android:id="@+id/opt_activity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/edit_text"
-            android:maxLines="1"
-            android:padding="12dp" />
+            android:entries="@array/activity_options" />
 
         <Button
             android:id="@+id/btn_next"

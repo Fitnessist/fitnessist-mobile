@@ -35,7 +35,7 @@ interface ApiService {
     fun getFoodHistory(
         @Header("Authorization") token: String,
         @Query("date") date: String
-    ): Call<List<GetFoodHistoryResponse>>
+    ): Call<GetFoodHistoryResponse>
 
     @GET("users/properties")
     fun getTDEECalculation(

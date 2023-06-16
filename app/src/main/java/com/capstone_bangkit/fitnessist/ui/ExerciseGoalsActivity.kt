@@ -13,27 +13,19 @@ class ExerciseGoalsActivity : AppCompatActivity() {
         binding = ActivityExerciseGoalsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var programId = ""
+        val intent = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
+
         binding.btnMenambahBeratBadan.setOnClickListener {
-            Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java).also {
-                it.putExtra(UserBodyDataActivity.PROGRAM_ID, "a58ef21c-922c-4a43-8d03-5ab6fe06d3e8")
-            }
-            val userBodyData = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
-            startActivity(userBodyData)
+            intent.putExtra("program_id", "a58ef21c-922c-4a43-8d03-5ab6fe06d3e8")
+            startActivity(intent)
         }
         binding.btnMengurangiBeratBadan.setOnClickListener {
-            Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java).also {
-                it.putExtra(UserBodyDataActivity.PROGRAM_ID, "f6c26ad5-3e7a-4dd8-9e8e-ff40cf24649f")
-            }
-            val userBodyData = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
-            startActivity(userBodyData)
+            intent.putExtra("program_id", "f6c26ad5-3e7a-4dd8-9e8e-ff40cf24649f")
+            startActivity(intent)
         }
         binding.btnJagaMasaOtot.setOnClickListener {
-            Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java).also {
-                it.putExtra(UserBodyDataActivity.PROGRAM_ID, "64c7d2dd-e2dd-4608-b3e4-aed91cd17f6a")
-            }
-            val userBodyData = Intent(this@ExerciseGoalsActivity, UserBodyDataActivity::class.java)
-            startActivity(userBodyData)
+            intent.putExtra("program_id", "64c7d2dd-e2dd-4608-b3e4-aed91cd17f6a")
+            startActivity(intent)
         }
     }
 }
