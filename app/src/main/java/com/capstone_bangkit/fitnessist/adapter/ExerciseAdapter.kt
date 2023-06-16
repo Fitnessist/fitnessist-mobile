@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone_bangkit.fitnessist.databinding.ItemWorkoutdetailBinding
-import com.capstone_bangkit.fitnessist.databinding.ItemWorkoutharianBinding
 import com.capstone_bangkit.fitnessist.model.workouts.Exercise
-import com.capstone_bangkit.fitnessist.model.workouts.Workout
 
 class ExerciseAdapter: RecyclerView.Adapter<ExerciseAdapter.ExerciseListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback

@@ -1,11 +1,8 @@
 package com.capstone_bangkit.fitnessist.viewmodel
 
-import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.capstone_bangkit.fitnessist.R
 import com.capstone_bangkit.fitnessist.api.ApiConfig
 import com.capstone_bangkit.fitnessist.api.ResponseJSON
 import com.capstone_bangkit.fitnessist.model.workouts.MyProgram

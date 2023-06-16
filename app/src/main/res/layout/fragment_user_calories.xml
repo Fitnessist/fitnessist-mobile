@@ -30,22 +30,29 @@
             app:layout_constraintVertical_bias="1.0" />
     </LinearLayout>
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/sementara_calendar"
-        android:layout_marginTop="32dp"/>
-
-    <TextView
-        android:id="@+id/title_kalori_harian"
-        android:layout_marginHorizontal="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kalori Harian"
-        android:textSize="20dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:id="@+id/tvSelectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selected Date: "
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="16dp"/>
+        <Button
+            android:id="@+id/btnSelectDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:textSize="12dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/yellowColor"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,11 +168,12 @@
                 android:text="1700"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                android:textAlignment="textEnd"
-                android:textColor="@color/black" />
+
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/total_firstCalories"
-                android:layout_width="match_parent"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:text="Sisa"
                 android:textSize="16dp"

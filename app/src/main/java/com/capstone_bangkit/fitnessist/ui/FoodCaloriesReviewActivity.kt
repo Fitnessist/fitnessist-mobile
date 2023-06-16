@@ -32,8 +32,8 @@ class FoodCaloriesReviewActivity : AppCompatActivity() {
         var foodId = intent.getStringExtra("food_id")
         var foodName = intent.getStringExtra("food_name")
         var imageUrl = intent.getStringExtra("image_url")
-        var caloriesPer100gr = intent.getStringExtra("calories_per_100gr")?.toInt()?.toDouble()
-        var totalGrams = intent.getStringExtra("total_grams")?.toInt()?.toDouble()
+        var caloriesPer100gr = intent.getStringExtra("calories_per_100gr")?.toInt()
+        var totalGrams = intent.getStringExtra("total_grams")?.toInt()
 
         val totalCalories = (caloriesPer100gr!! / 100) * totalGrams!!
 
@@ -41,7 +41,7 @@ class FoodCaloriesReviewActivity : AppCompatActivity() {
             tvFoodName.text = foodName
             tvCaloriesPer100gr.text = caloriesPer100gr.toInt().toString() + " calories"
             tvTotalFoodWeight.text = totalGrams.toInt().toString() + " calories"
-            tvTotalCalories.text = totalCalories.toInt().toString() + " calories"
+            tvTotalCalories.text = "$totalCalories calories"
 
             val getToken = authentication.getAccess(AuthenticationManager.TOKEN).toString()
             val token = "Bearer $getToken"
@@ -49,9 +49,9 @@ class FoodCaloriesReviewActivity : AppCompatActivity() {
                 food_name = foodName!!,
                 food_id = foodId!!,
                 image_url = imageUrl!!,
-                calories_per_100gr = totalCalories,
+                calories_per_100gr = totalCalories.toDouble(),
                 total_grams = totalGrams.toInt(),
-                total_calories = totalCalories
+                total_calories = totalCalories.toDouble()
             )
             btnKonfirmasi.setOnClickListener {
                 ApiConfig.getApiService().addFoodHistory(token, request).enqueue(object:

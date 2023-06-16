@@ -4,10 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.capstone_bangkit.fitnessist.R
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationManager
 import com.capstone_bangkit.fitnessist.databinding.ActivityWorkoutDetailBinding
 import com.capstone_bangkit.fitnessist.model.workouts.Exercise

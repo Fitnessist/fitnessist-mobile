@@ -17,7 +17,7 @@ class FoodHistoryAdapter(private val foodHistoryList: MutableList<GetFoodHistory
                     .centerCrop()
                     .into(imgFoodPicture)
                 tvFoodName.text = foodHistory.food_name
-                tvFoodCalories.text = foodHistory.total_calories.toString()
+                tvFoodCalories.text = foodHistory.total_calories?.toInt().toString() + " calories"
             }
         }
     }

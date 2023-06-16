@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.capstone_bangkit.fitnessist.R
 import com.capstone_bangkit.fitnessist.authentication.AuthenticationManager
 import com.capstone_bangkit.fitnessist.databinding.ActivityExerciseGoalsBinding
 import com.capstone_bangkit.fitnessist.viewmodel.ProgramViewModel

@@ -3,7 +3,6 @@ package com.capstone_bangkit.fitnessist.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstone_bangkit.fitnessist.R
 import com.capstone_bangkit.fitnessist.adapter.GamifikasiAdapter
 import com.capstone_bangkit.fitnessist.databinding.ActivityGamificationBinding
 import com.capstone_bangkit.fitnessist.model.GamifikasiDummy
