@@ -15,9 +15,9 @@ This repository contains the Android app for Fitnessist.
 
 ## Screenshots
 
-![Screenshot 1](https://drive.google.com/file/d/1rB3GjCPiPcpc7qxBdbFUKJtgg8V7M2Ax/view?usp=sharing)
-![Screenshot 2](https://drive.google.com/file/d/10jxxizwo-rDFVDkZn7PwxUoWP8Kxk_lb/view?usp=sharing)
-![Screenshot 3](https://drive.google.com/file/d/1KDpBTNPmPyuTGRBtlR4s6WPKOmm97xeT/view?usp=sharing)
+![Screenshot 1](https://storage.googleapis.com/bucket-training-model/mookup/Screenshot%20awal.png)
+![Screenshot 2](https://storage.googleapis.com/bucket-training-model/mookup/Screenshot%20beranda.png)
+![Screenshot 3](https://storage.googleapis.com/bucket-training-model/mookup/Screenshot%20workout.png)
 
 ## Documentation
 - [Postman Documentation](https://documenter.getpostman.com/view/16615700/2s93m7WM7a)
